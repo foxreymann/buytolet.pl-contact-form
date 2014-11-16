@@ -1,5 +1,16 @@
 from django.shortcuts import render
 
-# Create your views here.
+from btlplcontact.forms import ContactDataForm
+
 def index(request):
-  return render(request, "index.html", {})
+  if request.method == "POST":
+    form = ContactDataForm(request.POST)
+    if form.is_valid():
+      form.save()
+      return redirect('')
+  else:
+    form = ContactDataForm()
+  template_vars = {
+    "form": form
+  }
+  return render(request, "index.html", template_vars)
