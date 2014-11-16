@@ -1,5 +1,10 @@
 btlplcontact
 
+<div>
+  {% for message in messages %}
+    <div class="message.tags">{{message}}</div>
+  {% endfor %}
+</div>
 
 <form method="POST" action="">
   {%csrf_token%}
