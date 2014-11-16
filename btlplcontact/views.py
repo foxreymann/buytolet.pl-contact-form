@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from btlplcontact.forms import ContactDataForm
 
@@ -7,7 +7,7 @@ def index(request):
     form = ContactDataForm(request.POST)
     if form.is_valid():
       form.save()
-      return redirect('')
+      return redirect('/')
   else:
     form = ContactDataForm()
   template_vars = {
